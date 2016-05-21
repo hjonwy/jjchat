@@ -1,0 +1,9 @@
+buildscript {
+	repositories{
+		flatDir(dirs: "$projectDir/libs")
+	}
+	
+	dependencies {
+		 
+	 }
+}
