@@ -17,7 +17,7 @@ BAE如果使用git，默认上传文件不能超过1M, 可以在git settings => 
 1. 网页的功能，方便，好用.
 2. WebSocket的使用.
 3. 后期要支持H5声音的传输, H5视频的传输, 以及Canvas图像的传输.
-
+4. [http://jjchat.duapp.com](http://jjchat.duapp.com)
 
 ###Android App
 1. Android App的基本开发.
