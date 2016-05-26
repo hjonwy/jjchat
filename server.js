@@ -19,15 +19,59 @@ function handler (req, res) {
   });
 }
 
+var clients = {};
+
 io.on('connection', function(socket){
-	//console.log('a user connected');
-	//io.emit('chat message', 'new user connected: ' + socket.id);
-	socket.on('chat', function(msg){
-		//console.log('message: ' + msg);
-		io.emit('chat', {'sender':'aa', 'content':msg});
-		//socket.broadcast.emit('chat message', msg);
-	});
-	socket.on('disconnect', function(){
-		//console.log('a user disconnected');
-	});
+	socket.on('chat', onChat); //custom msg.
+	socket.on('login', onLogin); //custom msg.
+	socket.on('logout', onLogout); //custom msg.
+	socket.on('disconnect', onDisconnect);//built in event.
 });
+
+function onChat(msg){
+	var user=clients[this.id];
+	if(user){
+		io.emit('chat', {'sender':user.name,'content':msg});	
+	}else{
+		io.emit('chat', {'sender':'unkown','content':msg});
+	}
+}
+
+function onLogin(msg){
+	var user = clients[this.id];
+	if(user){
+		user.name=msg.name;
+	}
+	else{
+		clients[this.id]={'name':msg.name};
+	}
+	
+	io.emit('login', {'name':clients[this.id].name});
+}
+
+function onLogout(msg){
+	
+}
+
+function onDisconnect(){
+	var user=clients[this.id];
+	if(user){
+		io.emit('disconnect', {'name':user.name});
+	}
+	
+	delete clients[this.id];
+	
+	/*
+	var output="";
+	for (var key in clients) {
+            if (output == "") {
+                output = clients[key].name;
+            }
+            else {
+                output += "|" + clients[key].name;
+            }
+        }
+		
+        console.log(output);
+		*/
+}

@@ -3,8 +3,10 @@
   <head>
     <title>Chat with Juanr</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+	  * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
+	  #login{ margin: 10px;}
+	  #btnLogin { width: 80px; height: 25px;}
       form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form #m { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
       form #send { border: 0; width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
@@ -18,25 +20,54 @@
 	<script>
 		
 		$(document).ready(function(){
-			//var socket=io("http://jjchat.duapp.com");
-			var socket=io();
-			$("#send").on("click", function(){
-				socket.emit('chat', $('#m').val());
-				$('#m').val('');
-			});
+			var socket;
 			
-			socket.on("chat", function(msg){
-				$('#messages').append($('<li>').text(msg.sender + ": " + msg.content));
+			$('#chat').css('display','none');
+			
+			$('#btnLogin').on('click', function(){
+				var name = $('#name').val();
+				if(name){
+					$('#login').css('display','none');
+					$('#chat').css('display','block');
+					
+					socket=io();
+					
+					socket.emit('login', {'name':name});
+					
+					$("#send").on("click", function(){
+						socket.emit('chat', $('#m').val());
+						$('#m').val('');
+					});
+					
+					socket.on('chat', function(msg){
+						$('#messages').append($('<li>').text(msg.sender+": " + msg.content));
+					});
+					
+					socket.on('login', function(msg){
+						$('#messages').append($('<li>').text(msg.name + " login."));
+					});
+					
+					socket.on('disconnect', function(msg){
+						$('#messages').append($('<li>').text(msg.name +" leaved."));
+					});
+				}
 			});
 		});
 		
 	</script>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" />
-	  <input type="button" id="send" value="send" ></input>
-    </form>
+	<div id='login'>
+		<h3>Input your name:</h3>
+		<input id='name' />
+		<input type='button' id='btnLogin' value='login'/>
+	</div>
+	<div id='chat'>
+		<ul id="messages"></ul>
+		<form action="">
+		  <input id="m" autocomplete="off" />
+		  <input type="button" id="send" value="send" ></input>
+		</form>
+	</div>
   </body>
 </html>

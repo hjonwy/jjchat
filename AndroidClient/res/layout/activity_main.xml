@@ -14,7 +14,7 @@
             android:id="@+id/tvContent"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Ready..." />
+            android:text="Ready...\n" />
     </ScrollView>
 
     <EditText
