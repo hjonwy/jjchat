@@ -9,8 +9,11 @@
 
 ###百度云引用引擎(BAE)
 1. 应用的部署，需要注意的问题.
-BAE如果使用git，默认上传文件不能超过1M, 可以在git settings => Edit systemwide gitconfig里面修改.[Git上传大文件会失败怎么解决](https://bce.baidu.com/doc/BAE/FAQ.html#.E4.BB.A3.E7.A0.81.E7.AE.A1.E7.90.86)
-2. 如何使用MySql.
+2. 如何使用数据库例如MySql.
+
+####注意问题
+1. BAE如果使用git，默认上传文件不能超过1M, 可以在git settings => Edit systemwide gitconfig里面修改.[Git上传大文件会失败怎么解决](https://bce.baidu.com/doc/BAE/FAQ.html#.E4.BB.A3.E7.A0.81.E7.AE.A1.E7.90.86)
+2. Node.js在服务端运行的时候,BAE会将需要的module放在bae/node_moudles下面，所以用户自己的代码不要有这样的目录,如果需要用户自己的module，可以放在根目录下面.
 
 
 ###H5+WebSocket
