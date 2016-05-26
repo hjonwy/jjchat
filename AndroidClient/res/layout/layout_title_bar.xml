@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="10dp"
+        android:layout_y="7dp"
+        android:text="Chat with Juanr"
+        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu" />
+
+    <TextView
+        android:id="@+id/tvSettings"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_x="244dp"
+        android:layout_y="5dp"
+        android:linksClickable="true"
+        android:text="Settings..."
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</AbsoluteLayout>
