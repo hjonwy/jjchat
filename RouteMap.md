@@ -18,9 +18,12 @@
 
 ###H5+WebSocket
 1. 网页的功能，方便，好用.
-2. WebSocket的使用.
-3. 后期要支持H5声音的传输, H5视频的传输, 以及Canvas图像的传输.
-4. [http://jjchat.duapp.com](http://jjchat.duapp.com)
+2. Angular JS的练习和使用.
+3. jQuery的使用.
+4. Bootstrap的使用.
+5. WebSocket的使用.
+6. 后期要支持H5声音的传输, H5视频的传输, 以及Canvas图像的传输.
+7. [http://jjchat.duapp.com](http://jjchat.duapp.com)
 
 ###Android App
 1. Android App的基本开发.
